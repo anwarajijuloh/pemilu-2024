@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <!-- CDN A-Frame -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <!-- <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+  <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+
+  <!-- main JS -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- style CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+  <a-scene inspector-plugin-recast id="app" physics="debug: true;">
+
+    <a-entity id="rig" movement-controls="constrainToNavMesh: true" kinematic-body jump-ability="distance: 2">
+      <a-entity id="cam" camera position="1 1.6 0" look-controls="pointerLockEnabled: true">
+        <a-cursor nav-debug-pointer raycaster="objects: [nav-mesh];"></a-cursor>
+      </a-entity>
+    </a-entity>
+
+    <a-assets>
+      <audio id="appsound"
+        src="assets/sounds/creepy-music-box-halloween-music-horror-scary-spooky-dark-ambient-118577.mp3"
+        preload="auto"></audio>
+      <a-gltf-model id="backroom" src="assets/models/backrooms/scene.gltf"></a-gltf-model>
+      <a-gltf-model id="meshbackroom" src="assets/models/backrooms/navmesh.gltf"></a-gltf-model>
+      <a-gltf-model id="zombie" src="assets/models/zombie_walk_test/scene.gltf"></a-gltf-model>
+    </a-assets>
+
+    <a-entity id="bgsound" sound="src: #appsound; autoplay: true;"></a-entity>
+
+    <a-plane static-body></a-plane>
+    <!-- scene -->
+    <a-entity id="scene" gltf-model="#backroom"></a-entity>
+    <!-- navmesh -->
+    <a-entity id="navmesh" gltf-model="#meshbackroom" static-body nav-mesh visible="false"></a-entity>
+    <!-- enemy -->
+    <a-entity id="enemy" gltf-model="#zombie" dynamic-body position="0 0 -3" scale="0.7 0.7 0.7"
+      nav-agent visible="" animation-mixer></a-entity>
+
+
+  </a-scene>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>PILPRES 2024</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+  
+  <script src="assets/js/main.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <a class=".btn" href="/tpu.html">Ayo Coblos!</a>
+  </div>
+  </div>
+  <a-scene arjs="detectionMode: mono_and_matrix;matrixCodeType: 3x3_PARITY65;" embedded id="scene">
+
+    <a-assets>
+      <img id="amin" src="assets/img/amin.jpeg">
+      <img id="pragib" src="assets/img/pragib.jpg">
+      <img id="ganmah" src="assets/img/ganmah.jpg">
+
+      <audio id="aminmp3" src="assets/sounds/amin.mp3" preload="auto"></audio>
+      <audio id="pragibmp3" src="assets/sounds/pragib.mp3" preload="auto"></audio>
+      <audio id="ganmahmp3" src="assets/sounds/ganmah.mp3" preload="auto"></audio>
+      
+    </a-assets>
+
+    <a-entity text="value: QUICK COUNT 2024; width: 20; color: red;"></a-entity>
+
+    <a-marker type='barcode' value='5'>
+      <a-entity id="amin" geometry="primitive: box; height: 1.2; width: 1.4; depth: 0.01" material="src: #amin" sound="src: #aminmp3; on: click;"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='19'>
+      <a-entity id="pragib" geometry="primitive: box; height: 1.2; width: 1.4; depth: 0.01" material="src: #pragib" sound="src: #pragibmp3; on: click;"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='15'>
+      <a-entity id="ganmah" geometry="primitive: box; height: 1.2; width: 1.4; depth: 0.01" material="src: #ganmah" sound="src: #ganmahmp3; on: click;"></a-entity>
+    </a-marker>
+
+    <a-entity camera>
+      <a-entity cursor="fuse: true maxDistance:30; timeout:500;" 
+      scale="0.03 0.03 0.03" 
+      position="0 0 -2" 
+      geometry="primitive: ring" 
+      material="color: red; shader: flat; opacity:0.5"></a-entity>
+    </a-entity>
+    
+  </a-scene>
+</body>
+
+</html>

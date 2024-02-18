@@ -1,0 +1,92 @@
+<html>
+
+<head>
+  <title>TEMPAT PEMILIHAN UMUM</title>
+  <!-- CDN A-Frame -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+  <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+  <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+  <!-- main JS -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- style CSS -->
+  <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+
+</head>
+
+<body>
+  <a-scene inspector-plugin-recast>
+
+    <a-entity id="rig" movement-controls="constrainToNavMesh: true" kinematic-body jump-ability="distance: 2">
+      <a-entity id="cam" camera position="-8 1.6 0" look-controls="pointerLockEnabled: true">
+        <a-cursor nav-debug-pointer raycaster="objects: [nav-mesh];"></a-cursor>
+      </a-entity>
+    </a-entity>
+
+    <a-assets>
+      <audio id="appsound"
+        src="assets/sounds/jingglepemilu.mp3"
+        preload="auto"></audio>
+      <img id="kpu" src="assets/img/kpu.png">
+      <a-asset-item id="flag" src="assets/models/indonesian/scene.gltf"></a-asset-item>
+      <a-asset-item id="table" src="assets/models/wood_table_lowpoly.glb"></a-asset-item>
+      <a-asset-item id="scene" src="assets/models/lowpoly_city/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <!-- Sound -->
+    <a-entity id="bgsound" sound="src: #appsound; autoplay: true;"></a-entity>
+
+    <!-- scene -->
+    <a-entity gltf-model="#scene" position="20 0 -30"></a-entity>
+
+    <!-- tpu -->
+    <a-entity position="-8 0 -4" rotation="0 90 0" scale="0.03 0.03 0.03">
+      <a-entity gltf-model="#table" position="0 0 0">
+        <a-entity>
+          <a-entity geometry="primitive: cylinder; height: 100; width: 8;" position="-12 50 45"></a-entity>
+          <a-entity gltf-model="#flag" position="-14 88 28" rotation="0 120 0" scale="16 16 16" animation-mixer></a-entity>
+        </a-entity>
+        <a-entity geometry="geometry: plane; width: 30; height: 30" position="10 45 20" material="src: #kpu"></a-entity>
+        <a-entity geometry="geometry: plane; width: 30; height: 30" position="10 45 -20"
+          material="src: #kpu"></a-entity>
+        <a-entity geometry="geometry: plane; width: 40; height: 30" position="-6 45 0" rotation="0 90 0"
+          material="src: #kpu"></a-entity>
+      </a-entity>
+      <a-entity gltf-model="#table" position="0 0 -100">
+        <a-entity>
+          <a-entity geometry="primitive: cylinder; height: 100; width: 8;" position="-12 50 45"></a-entity>
+          <a-entity gltf-model="#flag" position="-14 88 28" rotation="0 120 0" scale="16 16 16" animation-mixer></a-entity>
+        </a-entity>
+        <a-entity geometry="geometry: plane; width: 30; height: 30" position="10 45 20" material="src: #kpu"></a-entity>
+        <a-entity geometry="geometry: plane; width: 30; height: 30" position="10 45 -20"
+          material="src: #kpu"></a-entity>
+        <a-entity geometry="geometry: plane; width: 40; height: 30" position="-6 45 0" rotation="0 90 0"
+          material="src: #kpu"></a-entity>
+      </a-entity>
+      <a-entity gltf-model="#table" position="0 0 100">
+        <a-entity>
+          <a-entity geometry="primitive: cylinder; height: 100; width: 8;" position="-12 50 45"></a-entity>
+          <a-entity gltf-model="#flag" position="-14 88 28" rotation="0 120 0" scale="16 16 16" animation-mixer></a-entity>
+        </a-entity>
+        <a-entity geometry="geometry: plane; width: 30; height: 30" position="10 45 20" material="src: #kpu"></a-entity>
+        <a-entity geometry="geometry: plane; width: 30; height: 30" position="10 45 -20"
+          material="src: #kpu"></a-entity>
+        <a-entity geometry="geometry: plane; width: 40; height: 30" position="-6 45 0" rotation="0 90 0"
+          material="src: #kpu"></a-entity>
+      </a-entity>
+    </a-entity>
+
+    <!-- GUI -->
+    <a-gui-progressbar width="2.5" height="0.25" margin="0 0 0.05 0" position="-8 0 -2">
+    </a-gui-progressbar>
+
+    <a-entity camera>
+      <a-entity cursor></a-entity>
+    </a-entity>
+  </a-scene>
+</body>
+
+</html>
